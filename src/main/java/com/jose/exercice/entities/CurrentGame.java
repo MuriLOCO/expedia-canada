@@ -1,5 +1,6 @@
 package com.jose.exercice.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -11,8 +12,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 @Entity
+@Table(uniqueConstraints={@UniqueConstraint(columnNames = {"home_team_id", "away_team_id", "progress"})}) //This allows only 1 HomeTeam and AwayTeam play at the same time
 public class CurrentGame {
 
 	@Id
@@ -25,9 +29,8 @@ public class CurrentGame {
 	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private Team awayTeam;
 	
-	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@Column(nullable = false)
-	private List<ScoreRegistry> scoreRegistryList;	
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)	
+	private List<ScoreRegistry> scoreRegistryList = new ArrayList<>();
 	
 	@Column(nullable = false)
 	private boolean progress;

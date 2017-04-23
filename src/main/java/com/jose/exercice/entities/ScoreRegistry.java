@@ -20,11 +20,15 @@ public class ScoreRegistry {
 	private long minute;
 
 	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private Team scoredTeam;
+	private Team teamScorer;
 	
 	@Column(nullable = false)
 	private String nameOfScorer;
+	
+	private long score;
 
+	private String stringToShow;
+	
 	public long getId() {
 		return id;
 	}
@@ -39,14 +43,14 @@ public class ScoreRegistry {
 
 	public void setMinute(long minute) {
 		this.minute = minute;
+	}	
+
+	public Team getTeamScorer() {
+		return teamScorer;
 	}
 
-	public Team getScoredTeam() {
-		return scoredTeam;
-	}
-
-	public void setScoredTeam(Team scoredTeam) {
-		this.scoredTeam = scoredTeam;
+	public void setTeamScorer(Team teamScorer) {
+		this.teamScorer = teamScorer;
 	}
 
 	public String getNameOfScorer() {
@@ -56,8 +60,22 @@ public class ScoreRegistry {
 	public void setNameOfScorer(String nameOfScorer) {
 		this.nameOfScorer = nameOfScorer;
 	}
-	
-	
+
+	public long getScore() {
+		return score;
+	}
+
+	public void setScore(long score) {
+		this.score = score;
+	}
+
+	public String getStringToShow() {
+		return stringToShow;
+	}
+
+	public void setStringToShow(String stringToShow) {
+		this.stringToShow = stringToShow;
+	}	
 	
 	
 }

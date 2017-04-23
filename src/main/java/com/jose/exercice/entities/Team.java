@@ -1,5 +1,6 @@
 package com.jose.exercice.entities;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,6 +12,8 @@ public class Team {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;	
+	
+	@Column(nullable = false, unique = true)
 	private String teamName;
 
 	public long getId() {

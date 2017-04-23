@@ -6,4 +6,5 @@ import com.jose.exercice.entities.CurrentGame;
 
 public interface CurrentGameRepository extends JpaRepository<CurrentGame, Long>{
 
+	CurrentGame findOneByProgress(final boolean progress);
 }
