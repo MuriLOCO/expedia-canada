@@ -27,8 +27,8 @@ public class CurrentGame {
 	
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@Column(nullable = false)
-	private List<ScoreRegistry> scoreRegistryList;
-
+	private List<ScoreRegistry> scoreRegistryList;	
+	
 	@Column(nullable = false)
 	private boolean progress;
 	
@@ -70,7 +70,5 @@ public class CurrentGame {
 
 	public void setProgress(boolean progress) {
 		this.progress = progress;
-	}
-	
-	
+	}	
 }

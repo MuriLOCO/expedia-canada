@@ -6,8 +6,8 @@
 </head>
 <body>
 <form action="#" th:action="@{/sendCommand}" th:object="${commandForm}" method="post">
-    	<p>Command: <input type="text" th:field="*{command}" /></p>     
-    	<p>Output: <input type="text" th:field="*{output}" /></p>    
+    	<p>Command: <input type="text" th:field="*{command}" /></p>         	 
+    	<textarea rows="4" cols="50" th:field="*{output}" readonly="readonly"></textarea>
         <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
     </form>
 </body>

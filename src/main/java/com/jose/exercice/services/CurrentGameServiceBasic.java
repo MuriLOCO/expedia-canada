@@ -2,11 +2,13 @@ package com.jose.exercice.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.jose.exercice.entities.CurrentGame;
 import com.jose.exercice.enums.CommandsEnum;
 import com.jose.exercice.repositories.CurrentGameRepository;
-import com.jose.exercice.wrappers.CommandOutPutWrapper;
+import com.jose.exercice.wrappers.CommandOutputWrapper;
 import com.jose.exercice.wrappers.GameProgressWrapper;
 
 @Service
@@ -19,14 +21,16 @@ public class CurrentGameServiceBasic implements CurrentGameService {
 		this.currentGameRepository = currentGameRepository;
 	}
 	
+	@Transactional(isolation = Isolation.READ_COMMITTED)
 	@Override
 	public void saveCurrentGame(final CurrentGame currentGame) {
 		// TODO Auto-generated method stub
 		
 	}
 	
+	@Transactional(isolation = Isolation.READ_COMMITTED)
 	@Override
-	public CommandOutPutWrapper analyseAndExecuteCommand(final String command) {
+	public CommandOutputWrapper analyseAndExecuteCommand(final String command) {
 		
 		//If the command contains at least one of the avaiable commands
 		if(command.contains(CommandsEnum.values().toString())){
@@ -42,9 +46,9 @@ public class CurrentGameServiceBasic implements CurrentGameService {
 				}
 			});
 			if(gameProgressWrapper.isProgress()){
-				return new CommandOutPutWrapper(true, "input error - please type 'print' for game details");
+				return new CommandOutputWrapper(true, "input error - please type 'print' for game details\n");
 			}else{
-				return new CommandOutPutWrapper(true, "input error - please start a game through typing Start: <Name of Home Team> vs. <Name of Away Team>");
+				return new CommandOutputWrapper(true, "input error - please start a game through typing Start: <Name of Home Team> vs. <Name of Away Team>\n");
 			}
 			
 		}
@@ -52,7 +56,7 @@ public class CurrentGameServiceBasic implements CurrentGameService {
 		
 		
 		
-		return new CommandOutPutWrapper(false, "Ok");
+		return new CommandOutputWrapper(false, "Ok");
 	}
 
 	
