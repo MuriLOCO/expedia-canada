@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Football Game</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<form action="#" th:action="@{/sendCommand}" th:object="${commandForm}" method="post">
+    	<p>Command: <input type="text" th:field="*{command}" /></p>     
+    	<p>Output: <input type="text" th:field="*{output}" /></p>    
+        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+    </form>
+</body>
+</html>
